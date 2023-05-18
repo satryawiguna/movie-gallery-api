@@ -3,10 +3,6 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Token extends Model {
     static associate(models) {
-      this.belongsTo(models.user, {
-        as: "user",
-        foreignKey: "user_id"
-      });
     }
   }
 

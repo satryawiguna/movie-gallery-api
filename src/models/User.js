@@ -3,10 +3,6 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      this.hasOne(models.token, {
-        as: "token"
-      });
-
       this.hasOne(models.contact, {
         as: "contact"
       });

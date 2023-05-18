@@ -6,4 +6,9 @@ const userConstant = {
      STATUS_REMOVED: 2,
 };
 
-export { userConstant };
+const roleConstant = {
+     ADMIN: 1,
+     GUEST: 2,
+};
+
+export { userConstant, roleConstant };

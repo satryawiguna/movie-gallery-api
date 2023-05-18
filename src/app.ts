@@ -5,6 +5,7 @@ import httpStatus from 'http-status';
 import ApiError from './helper/ApiError';
 import { errorConverter, errorHandler } from './middlewares/error';
 import routes from './route';
+import { jwtStrategy } from './config/passport';
 
 process.env.PWD = process.cwd();
 
@@ -15,10 +16,12 @@ app.use(
           origin: '*',
      })
 );
+
 app.use(express.static(`${process.env.PWD}/public`));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+passport.use('jwt', jwtStrategy);
 app.use(passport.initialize());
 
 app.get('/api/v1/test', async (req, res) => {

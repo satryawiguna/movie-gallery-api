@@ -9,6 +9,6 @@ if (config.redis.usePassword.toUpperCase() === 'YES') {
      client.auth(config.redis.password);
 }
 
-console.log('Redis Client loaded!!!');
+console.log('RedisHelper Client loaded!!!');
 
 module.exports = client;

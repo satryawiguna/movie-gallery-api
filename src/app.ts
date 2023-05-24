@@ -11,15 +11,26 @@ process.env.PWD = process.cwd();
 
 export const app: Express = express();
 
-app.use(
-     cors({
-          origin: '*',
-     })
-);
-
 app.use(express.static(`${process.env.PWD}/public`));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const corsOptions: cors.CorsOptions = {
+     allowedHeaders: [
+          'Origin',
+          'X-Requested-With',
+          'Content-Type',
+          'Accept',
+          'X-Access-Token',
+          'Authtype',
+          'Authorization',
+     ],
+     credentials: true,
+     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+     origin: 'http://localhost:3000',
+     preflightContinue: false,
+};
+app.use(cors(corsOptions));
 
 passport.use('jwt', jwtStrategy);
 app.use(passport.initialize());
